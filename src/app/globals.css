@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    --font: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+    --foreground-rgb: #000;
+    --background-start-rgb: #060118;
+    --background-mid-rgb: #5856d6;
+    --background-end-rgb: rgb(48, 0, 50);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: #bbb7d2;
+        --background-start-rgb: #060118;
+        --background-mid-rgb: #5856d6;
+        --background-end-rgb: rgb(48, 0, 50);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    color: var(--foreground-rgb);
+    background: var(--background-start-rgb);
+    background: linear-gradient(-5deg, var(--background-end-rgb) 0%, var(--background-mid-rgb) 18%, var(--background-start-rgb) 33%, var(--background-start-rgb) 100%);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+}
