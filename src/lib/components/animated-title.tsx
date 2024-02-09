@@ -56,10 +56,7 @@ const Component = () => {
   return (
     <Wrapper>
       <WrapGroup>
-        <BmeText variant="title">I am the one who&nbsp;</BmeText>
-      </WrapGroup>
-      <WrapGroup>
-        <BmeText variant="title">make&nbsp;</BmeText>
+        <BmeText variant="title">I make&nbsp;</BmeText>
         <Slides>
           {transitions((style, i) => (
             <Slide style={style}>
