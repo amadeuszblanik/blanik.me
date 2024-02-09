@@ -1,15 +1,10 @@
 "use client";
 
-import { ThemeProvider } from "styled-components";
-import { StyledComponentsRegistry, theme } from "@/styles";
+import { StyledComponentsRegistry } from "@/styles";
 import React from "react";
 
-const Providers = (props: React.PropsWithChildren) => {
-  return (
-    <StyledComponentsRegistry>
-      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-    </StyledComponentsRegistry>
-  );
-};
+const Providers = (props: React.PropsWithChildren) => (
+  <StyledComponentsRegistry>{props.children}</StyledComponentsRegistry>
+);
 
 export default Providers;
