@@ -1,10 +1,14 @@
 "use client";
 
 import { BmeAnimatedTitle, BmeContainer, BmeHeader, BmeText } from "@/lib/components";
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 
 export default function Home() {
+  useEffect(() => {
+    document.body.classList.add("scheme-dark", "bg-gradient");
+  }, []);
+
   return (
     <>
       <Head>
