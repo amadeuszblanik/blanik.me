@@ -21,7 +21,7 @@ const Slides = styled.div`
   --component-height: ${TEXT_STYLES.title.Mobile.fontSize};
 
   @media (min-width: ${breakpoints.Tablet}) {
-    --component-height: ${TEXT_STYLES.title.Tablet.fontSize};
+    --component-height: ${TEXT_STYLES.title.Tablet!.fontSize};
   }
 `;
 
@@ -41,9 +41,9 @@ const Component = () => {
   const [index, set] = useState(0);
   const transitions = useTransition(index, {
     key: index,
-    from: { opacity: 0, transform: `translateY(-${TEXT_STYLES.title.Tablet.fontSize})` },
+    from: { opacity: 0, transform: `translateY(-${TEXT_STYLES.title.Tablet!.fontSize})` },
     enter: { opacity: 1, transform: "translateY(0px)" },
-    leave: { opacity: 0, transform: `translateY(${TEXT_STYLES.title.Tablet.fontSize})`, delay: 1250 },
+    leave: { opacity: 0, transform: `translateY(${TEXT_STYLES.title.Tablet!.fontSize})`, delay: 1250 },
     config: { duration: 450 },
     onRest: (_a, _b, item) => {
       if (index === item) {

@@ -64,7 +64,8 @@ const Logo = styled.figure`
   width: 100%;
   max-width: 120px;
   margin-right: ${sizes.md};
-  &:after {
+
+  &::after {
     padding-bottom: 100%;
     content: "";
   }
