@@ -8,6 +8,7 @@ import React from "react";
 import { BmeFooter, BmeHead } from "@/lib/components";
 import styled from "styled-components";
 import { usePathname } from "next/navigation";
+import { Analytics } from "@vercel/analytics/react";
 
 const PositionWrapper = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ export default function Layout({
             <BmeFooter />
           </PositionWrapper>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
