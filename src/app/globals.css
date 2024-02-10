@@ -93,3 +93,7 @@ a {
         color-scheme: dark;
     }
 }
+
+ul, ol {
+    padding-left: 24px;
+}

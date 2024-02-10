@@ -5,6 +5,7 @@ import { DateFormatter } from "@/lib/service";
 import { clamp, firstElement, lastElement } from "bme-utils";
 import { breakpoints, sizes } from "@/styles";
 import Markdown from "react-markdown";
+import Image from "next/image";
 
 interface Props {
   logoUrl: string;
@@ -25,7 +26,7 @@ const Wrapper = styled.div`
 const Header = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  margin-bottom: ${sizes.md};
+  margin-bottom: ${sizes.lg};
 
   @media (min-width: ${breakpoints.Tablet}) {
     flex-flow: row nowrap;
@@ -58,7 +59,23 @@ const Controls = styled.div`
   margin: ${sizes.md} 0 0;
 `;
 
-const Component: React.FC<Props> = ({ companyName, positions }) => {
+const Logo = styled.figure`
+  position: relative;
+  width: 100%;
+  max-width: 120px;
+  margin-right: ${sizes.md};
+  &:after {
+    padding-bottom: 100%;
+    content: "";
+  }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+`;
+
+const Component: React.FC<Props> = ({ logoUrl, companyName, positions }) => {
   const [selectedPositionIndex, setSelectedPositionIndex] = useState(0);
   const selectedPosition = positions[selectedPositionIndex];
 
@@ -100,7 +117,16 @@ const Component: React.FC<Props> = ({ companyName, positions }) => {
           )}
         </DateWrapper>
       </Header>
-      <Markdown>{selectedPosition.description}</Markdown>
+      <ContentWrapper>
+        <Logo>
+          <Image
+            src={logoUrl ? require(`./../../../public${logoUrl}`) : require("./../../../public/assets/logo.svg")}
+            alt={`${companyName} logo`}
+            layout="fill"
+          />
+        </Logo>
+        <Markdown>{selectedPosition.description}</Markdown>
+      </ContentWrapper>
       {hasFewPositions && (
         <Controls>
           <BmeButton onClick={handlePrev}>
