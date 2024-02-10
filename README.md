@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# blanik.me
 
-## Getting Started
+Welcome to the source code repository for my personal webpage, [blanik.me](https://blanik.me)! My name is Amadeusz Blanik, and this site serves as a portfolio.
 
-First, run the development server:
+## About The Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is built using [Next.js 14](https://nextjs.org/), a powerful React framework that enables functionality such as server-side rendering and generating static websites. The website is styled using a combination of `styled-components` and CSS, offering a flexible way to style components while leveraging CSS variables for theming. This approach allows for a more dynamic and customizable styling system without relying on the `ThemeProvider` from `styled-components`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In addition to the core technologies, the site features smooth and modern animations implemented with [`react-spring`](https://www.react-spring.io/). `react-spring` is a spring-physics based animation library that allows for creating natural motion effects in React applications, enhancing user experience and interactivity.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Why Next.js, styled-components, and react-spring?
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Next.js 14:** Offers out-of-the-box features like hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more, which are crucial for building modern web applications.
+- **styled-components:** Provides a way to write actual CSS code to style your components. It also removes the mapping between components and styles, making it easier to track which styles are applied to which components.
+- **CSS Variables:** Used for theming across the site, allowing for easier theme customization and maintenance without the overhead of integrating with styled-components' `ThemeProvider`.
+- **react-spring:** A powerful library for creating fluid, natural animations that add life and interactivity to web applications. It leverages spring physics for smooth and natural motion effects.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The site is deployed on [Vercel](https://vercel.com/), chosen for its seamless integration with Next.js projects and its ease of use for deploying web applications.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+While I truly appreciate your interest in contributing to the project, I am currently not accepting pull requests. This project is a personal portfolio and as such, I prefer to maintain it myself.
 
-## Deploy on Vercel
+## Feedback
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you have any feedback or suggestions, feel free to open an issue on the repository. I'm always looking to improve and appreciate any insights you might have.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+This project is open source and available under the [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).
+
+This license allows for non-commercial use, sharing, and adaptation with attribution. It does not permit commercial use of the work or any derivatives.
+
+## Contact
+
+Amadeusz Blanik - Feel free to contact me through [GitHub](https://github.com/amadeuszblanik), [LinkedIn](https://www.linkedin.com/in/amadeuszblanik/) or visit my [personal webpage](https://blanik.me) for more information about my work and projects.
+
+Thank you for visiting my project!
