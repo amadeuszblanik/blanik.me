@@ -33,9 +33,9 @@ const Wrapper = styled.select`
 `;
 
 const Component: React.FC<Props> = ({ options, value, onChange }) => (
-  <Wrapper onChange={({ target }) => onChange(target.value)}>
+  <Wrapper onChange={({ target }) => onChange(target.value)} value={value}>
     {options.map(({ value: optionValue, label }) => (
-      <option key={optionValue} value={optionValue} selected={optionValue === value}>
+      <option key={optionValue} value={optionValue}>
         {label}
       </option>
     ))}

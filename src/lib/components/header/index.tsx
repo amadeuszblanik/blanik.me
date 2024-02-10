@@ -11,6 +11,7 @@ import MenuDesktop from "@/lib/components/header/menu-desktop";
 export const NAVIGATION_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Wolfie.app", href: "https://wolfie.app" },
 ];
 
 interface Props {

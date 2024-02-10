@@ -7,7 +7,7 @@ type TextVariants = "display" | "title" | "header" | "header-medium" | "body-lar
 
 interface TextProps {
   variant?: TextVariants;
-  wrap?: boolean;
+  nowrap?: boolean;
   fontStyle?: "normal" | "italic" | "oblique";
   mono?: boolean;
 }
@@ -84,7 +84,7 @@ const Text = styled.div<TextProps>`
   font-weight: ${({ variant }) => TEXT_STYLES[variant ?? "body"].Mobile.fontWeight};
   font-style: ${({ fontStyle }) => fontStyle || "normal"};
   font-family: ${({ mono }) => (mono ? "var(--font-mono)" : "var(--font)")};
-  white-space: ${({ wrap }) => (wrap === false ? "pre" : "normal")};
+  white-space: ${({ nowrap }) => (nowrap ? "pre" : "normal")};
 
   ${({ variant }) =>
     Object.entries(TEXT_STYLES[variant ?? "body"])

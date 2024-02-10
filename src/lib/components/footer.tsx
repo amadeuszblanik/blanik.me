@@ -53,9 +53,9 @@ const Component = () => {
     <BmeContainer>
       <Wrapper>
         <Section order={1} align="flex-start">
-          <BmeText wrap={false}>Silesia, Poland 🇪🇺</BmeText>
+          <BmeText nowrap>Silesia, Poland 🇪🇺</BmeText>
           <Spacer />
-          <BmeText wrap={false}>{currentTime} CEST</BmeText>
+          <BmeText nowrap>{currentTime} CEST</BmeText>
         </Section>
         <Section order={0} align="space-between">
           <BmeLink url="https://github.com/amadeuszblanik">Github</BmeLink>‧
@@ -64,9 +64,9 @@ const Component = () => {
           <BmeLink url="https://ablanik.medium.com/">Medium</BmeLink>
         </Section>
         <Section order={2} align="flex-end">
-          <BmeText wrap={false}>Blanik.me</BmeText>
+          <BmeText nowrap>Blanik.me</BmeText>
           <Spacer />
-          <BmeText wrap={false}>&copy; {new Date().getFullYear()}</BmeText>
+          <BmeText nowrap>&copy; {new Date().getFullYear()}</BmeText>
         </Section>
       </Wrapper>
     </BmeContainer>
