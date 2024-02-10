@@ -1,6 +1,7 @@
 import { BmeContainer, BmeLink, BmeText } from "@/lib/components/index";
 import styled from "styled-components";
 import { breakpoints, sizes } from "@/styles";
+import { TimeFormatter } from "@/lib/service";
 
 const Wrapper = styled.footer`
   display: flex;
@@ -46,11 +47,7 @@ const Spacer = styled.div`
 `;
 
 const Component = () => {
-  const date = new Date().toLocaleTimeString("en-GB", {
-    timeZone: "Europe/Warsaw",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const currentTime = new TimeFormatter(new Date()).mediumLocal();
 
   return (
     <BmeContainer>
@@ -58,7 +55,7 @@ const Component = () => {
         <Section order={1} align="flex-start">
           <BmeText wrap={false}>Silesia, Poland 🇪🇺</BmeText>
           <Spacer />
-          <BmeText wrap={false}>{date} CEST</BmeText>
+          <BmeText wrap={false}>{currentTime} CEST</BmeText>
         </Section>
         <Section order={0} align="space-between">
           <BmeLink url="https://github.com/amadeuszblanik">Github</BmeLink>‧

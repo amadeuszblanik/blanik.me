@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { breakpoints } from "@/styles";
 import { Breakpoints } from "@/styles/breakpoints";
+import { breakpoints } from "@/styles";
 
-type TextVariants = "display" | "title" | "header" | "body";
+type TextVariants = "display" | "title" | "header" | "header-medium" | "body-large" | "body";
 
 interface TextProps {
   variant?: TextVariants;
@@ -14,80 +14,88 @@ interface TextProps {
 
 interface TextVariantStyles {
   fontSize: string;
+  fontWeight: "300" | "400" | "500" | "600" | "700";
 }
 
-export const TEXT_STYLES: { [key in TextVariants]: { [key2 in Breakpoints]: TextVariantStyles } } = {
+interface TextStylesResponsive {
+  [Breakpoints.Mobile]: TextVariantStyles;
+  [Breakpoints.MobileXl]?: TextVariantStyles;
+  [Breakpoints.Tablet]?: TextVariantStyles;
+  [Breakpoints.Desktop]?: TextVariantStyles;
+}
+
+export const TEXT_STYLES: { [key in TextVariants]: TextStylesResponsive } = {
   display: {
     [Breakpoints.Mobile]: {
       fontSize: "52px",
-    },
-    [Breakpoints.MobileXl]: {
-      fontSize: "52px",
+      fontWeight: "300",
     },
     [Breakpoints.Tablet]: {
       fontSize: "112px",
-    },
-    [Breakpoints.Desktop]: {
-      fontSize: "112px",
+      fontWeight: "300",
     },
   },
   title: {
     [Breakpoints.Mobile]: {
       fontSize: "52px",
-    },
-    [Breakpoints.MobileXl]: {
-      fontSize: "52px",
+      fontWeight: "500",
     },
     [Breakpoints.Tablet]: {
       fontSize: "80px",
-    },
-    [Breakpoints.Desktop]: {
-      fontSize: "80px",
+      fontWeight: "500",
     },
   },
   header: {
     [Breakpoints.Mobile]: {
-      fontSize: "42px",
-    },
-    [Breakpoints.MobileXl]: {
-      fontSize: "42px",
+      fontSize: "48px",
+      fontWeight: "500",
     },
     [Breakpoints.Tablet]: {
-      fontSize: "42px",
+      fontSize: "60px",
+      fontWeight: "500",
     },
-    [Breakpoints.Desktop]: {
-      fontSize: "42px",
+  },
+  "header-medium": {
+    [Breakpoints.Mobile]: {
+      fontSize: "32px",
+      fontWeight: "400",
+    },
+  },
+  "body-large": {
+    [Breakpoints.Mobile]: {
+      fontSize: "18px",
+      fontWeight: "400",
+    },
+    [Breakpoints.Tablet]: {
+      fontSize: "20px",
+      fontWeight: "400",
     },
   },
   body: {
     [Breakpoints.Mobile]: {
       fontSize: "14px",
-    },
-    [Breakpoints.MobileXl]: {
-      fontSize: "14px",
-    },
-    [Breakpoints.Tablet]: {
-      fontSize: "14px",
-    },
-    [Breakpoints.Desktop]: {
-      fontSize: "14px",
+      fontWeight: "400",
     },
   },
 };
 
 const Text = styled.div<TextProps>`
   font-size: ${({ variant }) => TEXT_STYLES[variant ?? "body"].Mobile.fontSize};
+  font-weight: ${({ variant }) => TEXT_STYLES[variant ?? "body"].Mobile.fontWeight};
   font-style: ${({ fontStyle }) => fontStyle || "normal"};
   font-family: ${({ mono }) => (mono ? "var(--font-mono)" : "var(--font)")};
   white-space: ${({ wrap }) => (wrap === false ? "pre" : "normal")};
 
   ${({ variant }) =>
-    Object.entries(breakpoints).map(
-      ([breakpoint, value]) => `
-    @media (min-width: ${value}) {
-      font-size: ${TEXT_STYLES[variant ?? "body"][breakpoint as Breakpoints].fontSize};
+    Object.entries(TEXT_STYLES[variant ?? "body"])
+      .slice(1)
+      .map(
+        ([breakpoint, value]) => `
+    @media (min-width: ${breakpoints[breakpoint as Breakpoints]}) {
+      font-size: ${value.fontSize};
+      font-weight: ${value.fontWeight};
   }`,
-    )}
+      )}
 `;
 
 const Component: React.FC<TextProps & React.PropsWithChildren> = ({ children, ...props }) => {
