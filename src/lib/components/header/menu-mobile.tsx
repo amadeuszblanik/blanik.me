@@ -19,6 +19,7 @@ const Wrapper = styled(animated.div)`
   z-index: 1000;
   width: 100%;
   background: rgb(var(--background));
+  overflow: hidden;
 `;
 
 const Navigation = styled.nav`
