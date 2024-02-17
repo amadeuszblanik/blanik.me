@@ -19,7 +19,7 @@ const theme: DefaultTheme = {
     blue: "#007aff",
     green: "#4cd964",
     dark: "#060118",
-    light: "#bbb7d2",
+    light: "#f1f1f1",
   },
 };
 

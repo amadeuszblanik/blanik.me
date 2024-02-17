@@ -1,6 +1,6 @@
 import React from "react";
-import { BmeContainer, BmeExperience, BmeHeader, BmeList, BmeText } from "@/lib/components";
 import { LayoutMain } from "@/layout";
+import { BmeContainer, BmeExperience, BmeHeader, BmeList, BmeText } from "@/lib/components";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import ApiContentfulService, { ExperienceEntrySkeleton } from "@/service/api-contentful.service";
 import { EntryCollection, LocaleCode } from "contentful";
@@ -27,17 +27,20 @@ export default function Page({ data }: InferGetStaticPropsType<typeof getStaticP
           {data.map(
             ({
               sys: { id: key },
-              fields: { companyName, positionName, description, dateStart, dateEnd, location },
+              fields: { logo, companyName, positionName, description, dateStart, dateEnd, location },
             }) => (
-              <BmeExperience
-                key={key}
-                companyName={companyName}
-                positionName={positionName}
-                description={description}
-                dateStart={new Date(dateStart)}
-                dateEnd={dateEnd && new Date(dateEnd)}
-                location={location}
-              />
+              <>
+                <BmeExperience
+                  key={key}
+                  logo={logo.fields.file.url}
+                  companyName={companyName}
+                  positionName={positionName}
+                  description={description}
+                  dateStart={new Date(dateStart)}
+                  dateEnd={dateEnd && new Date(dateEnd)}
+                  location={location}
+                />
+              </>
             ),
           )}
         </BmeList>
