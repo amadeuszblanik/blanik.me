@@ -2,6 +2,7 @@ export { default as BmeAnimatedTitle } from "./animated-title";
 export { default as BmeBadge } from "./badge";
 export { default as BmeBody } from "./body";
 export { default as BmeButton } from "./button";
+export { default as BmeButtonLink } from "./button-link";
 export { default as BmeContainer } from "./container";
 export { default as BmeExperience } from "./experience";
 export { default as BmeFooter } from "./footer";

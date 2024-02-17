@@ -31,8 +31,12 @@ const Component: React.FC<React.PropsWithChildren> = ({ children }) => {
   }, []);
 
   const setTheme = (nextTheme: ThemeVariants) => {
-    setStateTheme(nextTheme);
-    localStorage.setItem(StorageKeys.Theme, nextTheme);
+    if (!nextTheme) {
+      return;
+    }
+
+    setStateTheme(nextTheme ?? ThemeVariants.Dark);
+    localStorage.setItem(StorageKeys.Theme, nextTheme ?? ThemeVariants.Dark);
   };
 
   return (
