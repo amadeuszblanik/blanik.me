@@ -12,7 +12,7 @@ In addition to the core technologies, the site features smooth and modern animat
 
 - **Next.js 14:** Offers out-of-the-box features like hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more, which are crucial for building modern web applications.
 - **styled-components:** Provides a way to write actual CSS code to style your components. It also removes the mapping between components and styles, making it easier to track which styles are applied to which components.
-- **CSS Variables:** Used for theming across the site, allowing for easier theme customization and maintenance without the overhead of integrating with styled-components' `ThemeProvider`.
+- **CSS Variables:** Used for theming across the site, allowing for easier themeDark customization and maintenance without the overhead of integrating with styled-components' `ThemeProvider`.
 - **react-spring:** A powerful library for creating fluid, natural animations that add life and interactivity to web applications. It leverages spring physics for smooth and natural motion effects.
 
 ## Deployment

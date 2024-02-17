@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import { BmeButton, BmeSelect, BmeText } from "@/lib/components/index";
+import React from "react";
+import { BmeText } from "@/lib/components/index";
 import styled from "styled-components";
 import { DateFormatter } from "@/lib/service";
-import { clamp, firstElement, lastElement } from "bme-utils";
 import { breakpoints, sizes } from "@/styles";
-import Markdown from "react-markdown";
-import Image from "next/image";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { Document } from "@contentful/rich-text-types";
 
 interface Props {
-  logoUrl: string;
   companyName: string;
-  positions: { name: string; startDate: Date; endDate?: Date; description: string }[];
+  positionName: string;
+  description?: Document;
+  dateStart: Date;
+  dateEnd?: Date;
+  location?: String;
 }
 
 const Wrapper = styled.div`
@@ -51,14 +53,6 @@ const DateWrapper = styled.div`
   align-items: flex-end;
 `;
 
-const Controls = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  margin: ${sizes.md} 0 0;
-`;
-
 const Logo = styled.figure`
   position: relative;
   width: 100%;
@@ -76,68 +70,24 @@ const ContentWrapper = styled.div`
   flex-flow: row nowrap;
 `;
 
-const Component: React.FC<Props> = ({ logoUrl, companyName, positions }) => {
-  const [selectedPositionIndex, setSelectedPositionIndex] = useState(0);
-  const selectedPosition = positions[selectedPositionIndex];
-
-  const firstPosition = lastElement(positions)!;
-  const lastPosition = firstElement(positions)!;
-
-  const hasFewPositions = positions.length > 1;
-
-  const handlePrev = () => {
-    setSelectedPositionIndex(clamp(selectedPositionIndex - 1, 0, positions.length - 1));
-  };
-
-  const handleNext = () => {
-    setSelectedPositionIndex(clamp(selectedPositionIndex + 1, 0, positions.length - 1));
-  };
-
+const Component: React.FC<Props> = ({ companyName, positionName, description, dateStart, dateEnd, location }) => {
   return (
     <Wrapper>
       <Header>
         <BmeText variant="header-medium">{companyName}</BmeText>
         <PositionWrapper>
-          <BmeSelect
-            value={selectedPosition.name}
-            options={positions.map((position) => ({ label: position.name, value: position.name }))}
-            onChange={(position) => setSelectedPositionIndex(positions.findIndex(({ name }) => name === position))}
-          />
-          {hasFewPositions && <BmeText variant="body">&More</BmeText>}
+          <BmeText variant="body-large">{positionName}</BmeText>
         </PositionWrapper>
         <DateWrapper>
           <BmeText variant="body-large">
-            {new DateFormatter(selectedPosition.startDate).mediumMonth()} →{" "}
-            {selectedPosition.endDate ? new DateFormatter(selectedPosition.endDate).mediumMonth() : "Now"}
+            {new DateFormatter(dateStart).mediumMonth()} → {dateEnd ? new DateFormatter(dateEnd).mediumMonth() : "Now"}
           </BmeText>
-          {hasFewPositions && (
-            <BmeText variant="body-large">
-              {new DateFormatter(firstPosition.startDate).mediumMonth()} →{" "}
-              {lastPosition.endDate ? new DateFormatter(lastPosition.endDate).mediumMonth() : "Now"}
-            </BmeText>
-          )}
+          <BmeText>{location}</BmeText>
         </DateWrapper>
       </Header>
       <ContentWrapper>
-        <Logo>
-          <Image
-            src={logoUrl ? require(`./../../../public${logoUrl}`) : require("./../../../public/assets/logo.svg")}
-            alt={`${companyName} logo`}
-            layout="fill"
-          />
-        </Logo>
-        <Markdown>{selectedPosition.description}</Markdown>
+        {description && <div dangerouslySetInnerHTML={{ __html: documentToHtmlString(description) }} />}
       </ContentWrapper>
-      {hasFewPositions && (
-        <Controls>
-          <BmeButton onClick={handlePrev}>
-            <BmeText>← Prev</BmeText>
-          </BmeButton>
-          <BmeButton onClick={handleNext}>
-            <BmeText>Next →</BmeText>
-          </BmeButton>
-        </Controls>
-      )}
     </Wrapper>
   );
 };

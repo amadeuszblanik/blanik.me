@@ -9,11 +9,13 @@ const Wrapper = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: ${sizes.lg};
   margin-bottom: ${sizes.md};
 
   @media (min-width: ${breakpoints.Desktop}) {
     flex-direction: row;
     justify-content: space-between;
+    margin-top: ${sizes.xl};
     margin-bottom: ${sizes.xl};
   }
 `;
