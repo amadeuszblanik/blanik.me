@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { BmeText } from "@/lib/components/index";
 
-interface Props {
+interface Props extends React.PropsWithChildren {
   onClick: () => void;
-  children: string;
 }
 
 const Button = styled.button`

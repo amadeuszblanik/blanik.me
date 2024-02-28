@@ -64,8 +64,8 @@ const Component = () => {
   const currentTime = new TimeFormatter(new Date()).mediumLocal();
 
   const switchTheme = useCallback(() => {
-    setTheme(setTheme(isDarkMode ? ThemeVariants.Light : ThemeVariants.Dark));
-  }, [theme, setTheme]);
+    setTheme(isDarkMode ? ThemeVariants.Light : ThemeVariants.Dark);
+  }, [setTheme, isDarkMode]);
 
   return (
     <BmeContainer>
@@ -73,7 +73,7 @@ const Component = () => {
         <ContentRow>
           <Section order={0} align="center">
             <Spacer />
-            <BmeButtonLink onClick={() => switchTheme()}>Switch to {isDarkMode ? "light" : "dark"} mode</BmeButtonLink>
+            <BmeButtonLink onClick={switchTheme}>Switch to {isDarkMode ? "light" : "dark"} mode</BmeButtonLink>
             <Spacer />
           </Section>
         </ContentRow>

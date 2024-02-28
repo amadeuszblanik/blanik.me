@@ -21,8 +21,7 @@ export default class ApiContentfulService {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
   });
 
-  experience: Promise<EntryCollection<ExperienceEntrySkeleton, undefined, LocaleCode>> =
-    this.client.getEntries<ExperienceEntrySkeleton>({
-      content_type: "experience",
-    });
+  experience = this.client.withoutUnresolvableLinks.getEntries<ExperienceEntrySkeleton>({
+    content_type: "experience",
+  });
 }

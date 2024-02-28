@@ -3,9 +3,9 @@ import { LayoutMain } from "@/layout";
 import { BmeContainer, BmeExperience, BmeHeader, BmeList, BmeText } from "@/lib/components";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import ApiContentfulService, { ExperienceEntrySkeleton } from "@/service/api-contentful.service";
-import { EntryCollection, LocaleCode } from "contentful";
+import { Entry } from "contentful";
 
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async () => {
   const experience = await new ApiContentfulService().experience;
   const data = experience.items.sort(
     ({ fields: { dateStart: dateA } }, { fields: { dateStart: dateB } }) =>
@@ -14,7 +14,7 @@ export const getStaticProps = (async (context) => {
 
   return { props: { data } };
 }) satisfies GetStaticProps<{
-  data: EntryCollection<ExperienceEntrySkeleton, undefined, LocaleCode>;
+  data: Entry<ExperienceEntrySkeleton>[];
 }>;
 
 export default function Page({ data }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -32,7 +32,7 @@ export default function Page({ data }: InferGetStaticPropsType<typeof getStaticP
               <>
                 <BmeExperience
                   key={key}
-                  logo={logo.fields.file.url}
+                  logo={logo?.fields.file?.url}
                   companyName={companyName}
                   positionName={positionName}
                   description={description}
