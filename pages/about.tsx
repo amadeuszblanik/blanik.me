@@ -1,30 +1,42 @@
 import React from "react";
 import { LayoutMain } from "@/layout";
-import { BmeContainer, BmeExperience, BmeHeader, BmeList, BmeSection, BmeText } from "@/lib/components";
+import { BmeContainer, BmeExperience, BmeHeader, BmeSection, BmeText } from "@/lib/components";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import ApiContentfulService, { ExperienceEntrySkeleton } from "@/service/api-contentful.service";
+import ApiContentfulService, { AboutEntrySkeleton, ExperienceEntrySkeleton } from "@/service/api-contentful.service";
 import { Entry } from "contentful";
+import { firstElement } from "bme-utils";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 export const getStaticProps = (async () => {
-  const experience = await new ApiContentfulService().experience;
-  const data = experience.items.sort(
+  const apiContentfulService = new ApiContentfulService();
+
+  const contentfulAbout = await apiContentfulService.about;
+
+  const contentfulExperience = await apiContentfulService.experience;
+  const experience = contentfulExperience.items.sort(
     ({ fields: { dateStart: dateA } }, { fields: { dateStart: dateB } }) =>
       new Date(dateB).getTime() - new Date(dateA).getTime(),
   );
 
-  return { props: { data } };
+  return { props: { about: firstElement(contentfulAbout.items), experience } };
 }) satisfies GetStaticProps<{
-  data: Entry<ExperienceEntrySkeleton>[];
+  about?: Entry<AboutEntrySkeleton> | null;
+  experience: Entry<ExperienceEntrySkeleton>[];
 }>;
 
-export default function Page({ data }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page({ about, experience }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <LayoutMain>
       <BmeHeader title={<BmeText variant="title">About me</BmeText>} />
       <BmeContainer as="main">
+        {about && (
+          <BmeSection header={about.fields.name}>
+            <article dangerouslySetInnerHTML={{ __html: documentToHtmlString(about.fields.content) }} />
+          </BmeSection>
+        )}
         <BmeSection header="Experience">
           <BmeExperience>
-            {data.map(
+            {experience.map(
               ({
                 sys: { id: key },
                 fields: { logo, companyName, positionName, description, dateStart, dateEnd, location, url },

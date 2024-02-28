@@ -1,5 +1,33 @@
 import * as contentful from "contentful";
 
+export type AboutEntrySkeleton = {
+  contentTypeId: "about";
+  fields: {
+    name: contentful.EntryFieldTypes.Text;
+    content: contentful.EntryFieldTypes.RichText;
+  };
+};
+
+interface AbitilitiesFields {
+  name: contentful.EntryFieldTypes.Text;
+  level: contentful.EntryFieldTypes.Integer;
+}
+
+export type AbilitiesCodingEntrySkeleton = {
+  contentTypeId: "technology";
+  fields: AbitilitiesFields;
+};
+
+export type AbilitiesLanguagesEntrySkeleton = {
+  contentTypeId: "abilitiesLanguages";
+  fields: AbitilitiesFields;
+};
+
+export type AbilitiesOthersEntrySkeleton = {
+  contentTypeId: "abilitiesOthers";
+  fields: AbitilitiesFields;
+};
+
 export type ExperienceEntrySkeleton = {
   contentTypeId: "experience";
   fields: {
@@ -19,6 +47,22 @@ export default class ApiContentfulService {
     space: process.env.CONTENTFUL_SPACE!,
     environment: process.env.CONTENTFUL_ENVIRONMENT,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+  });
+
+  about = this.client.withoutUnresolvableLinks.getEntries<AboutEntrySkeleton>({
+    content_type: "about",
+  });
+
+  abilitiesCoding = this.client.withoutUnresolvableLinks.getEntries<AbilitiesCodingEntrySkeleton>({
+    content_type: "technology",
+  });
+
+  abilitiesLanguages = this.client.withoutUnresolvableLinks.getEntries<AbilitiesLanguagesEntrySkeleton>({
+    content_type: "abilitiesLanguages",
+  });
+
+  abilitiesOthers = this.client.withoutUnresolvableLinks.getEntries<AbilitiesOthersEntrySkeleton>({
+    content_type: "abilitiesOthers",
   });
 
   experience = this.client.withoutUnresolvableLinks.getEntries<ExperienceEntrySkeleton>({

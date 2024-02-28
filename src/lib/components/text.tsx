@@ -76,6 +76,10 @@ export const TEXT_STYLES: { [key in TextVariants]: TextStylesResponsive } = {
       fontSize: "0.875rem",
       fontWeight: "400",
     },
+    [Breakpoints.Tablet]: {
+      fontSize: "1rem",
+      fontWeight: "400",
+    },
   },
 };
 
