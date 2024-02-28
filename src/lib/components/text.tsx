@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Breakpoints } from "@/styles/breakpoints";
 import { breakpoints } from "@/styles";
 
-type TextVariants = "display" | "title" | "header" | "header-medium" | "body-large" | "body";
+type TextVariants = "display" | "title" | "header" | "header-small" | "body-large" | "body";
 
 interface TextProps {
   variant?: TextVariants;
@@ -27,53 +27,53 @@ interface TextStylesResponsive {
 export const TEXT_STYLES: { [key in TextVariants]: TextStylesResponsive } = {
   display: {
     [Breakpoints.Mobile]: {
-      fontSize: "52px",
+      fontSize: "3.25rem",
       fontWeight: "300",
     },
     [Breakpoints.Tablet]: {
-      fontSize: "112px",
+      fontSize: "7rem",
       fontWeight: "300",
     },
   },
   title: {
     [Breakpoints.Mobile]: {
-      fontSize: "52px",
+      fontSize: "3.25rem",
       fontWeight: "500",
     },
     [Breakpoints.Tablet]: {
-      fontSize: "80px",
+      fontSize: "5rem",
       fontWeight: "500",
     },
   },
   header: {
     [Breakpoints.Mobile]: {
-      fontSize: "48px",
+      fontSize: "3rem",
       fontWeight: "500",
     },
     [Breakpoints.Tablet]: {
-      fontSize: "60px",
+      fontSize: "3.75rem",
       fontWeight: "500",
     },
   },
-  "header-medium": {
+  "header-small": {
     [Breakpoints.Mobile]: {
-      fontSize: "32px",
-      fontWeight: "400",
+      fontSize: "1.25rem",
+      fontWeight: "700",
     },
   },
   "body-large": {
     [Breakpoints.Mobile]: {
-      fontSize: "18px",
+      fontSize: "1.125rem",
       fontWeight: "400",
     },
     [Breakpoints.Tablet]: {
-      fontSize: "20px",
+      fontSize: "1.25rem",
       fontWeight: "400",
     },
   },
   body: {
     [Breakpoints.Mobile]: {
-      fontSize: "14px",
+      fontSize: "0.875rem",
       fontWeight: "400",
     },
   },

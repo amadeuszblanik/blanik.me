@@ -1,6 +1,6 @@
 import React from "react";
 import { LayoutMain } from "@/layout";
-import { BmeContainer, BmeExperience, BmeHeader, BmeList, BmeText } from "@/lib/components";
+import { BmeContainer, BmeExperience, BmeHeader, BmeList, BmeSection, BmeText } from "@/lib/components";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import ApiContentfulService, { ExperienceEntrySkeleton } from "@/service/api-contentful.service";
 import { Entry } from "contentful";
@@ -22,15 +22,14 @@ export default function Page({ data }: InferGetStaticPropsType<typeof getStaticP
     <LayoutMain>
       <BmeHeader title={<BmeText variant="title">About me</BmeText>} />
       <BmeContainer as="main">
-        <BmeText variant="header">Experience</BmeText>
-        <BmeList>
-          {data.map(
-            ({
-              sys: { id: key },
-              fields: { logo, companyName, positionName, description, dateStart, dateEnd, location },
-            }) => (
-              <>
-                <BmeExperience
+        <BmeSection header="Experience">
+          <BmeExperience>
+            {data.map(
+              ({
+                sys: { id: key },
+                fields: { logo, companyName, positionName, description, dateStart, dateEnd, location, url },
+              }) => (
+                <BmeExperience.Item
                   key={key}
                   logo={logo?.fields.file?.url}
                   companyName={companyName}
@@ -39,11 +38,12 @@ export default function Page({ data }: InferGetStaticPropsType<typeof getStaticP
                   dateStart={new Date(dateStart)}
                   dateEnd={dateEnd && new Date(dateEnd)}
                   location={location}
+                  url={url}
                 />
-              </>
-            ),
-          )}
-        </BmeList>
+              ),
+            )}
+          </BmeExperience>
+        </BmeSection>
       </BmeContainer>
     </LayoutMain>
   );

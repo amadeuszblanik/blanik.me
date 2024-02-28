@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  html {
+    font-size: 16px;
+  }
+  
   html,
   body {
     max-width: 100vw;

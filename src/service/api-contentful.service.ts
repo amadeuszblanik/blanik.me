@@ -1,5 +1,4 @@
 import * as contentful from "contentful";
-import { EntryCollection, LocaleCode } from "contentful";
 
 export type ExperienceEntrySkeleton = {
   contentTypeId: "experience";
@@ -11,6 +10,7 @@ export type ExperienceEntrySkeleton = {
     dateStart: contentful.EntryFieldTypes.Date;
     dateEnd?: contentful.EntryFieldTypes.Date;
     location?: contentful.EntryFieldTypes.Text;
+    url?: contentful.EntryFieldTypes.Text;
   };
 };
 
