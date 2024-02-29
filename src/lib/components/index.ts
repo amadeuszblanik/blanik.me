@@ -11,6 +11,7 @@ export { default as BmeFooter } from "./footer";
 export { default as BmeHeader } from "./header/index";
 export { default as BmeGlobalStyle } from "./global-style";
 export { default as BmeHead } from "./head";
+export { default as BmeInput } from "./input";
 export { default as BmeLink } from "./link";
 export { default as BmeList } from "./list";
 export { default as BmeProviders } from "./providers";
