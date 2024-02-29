@@ -1,3 +1,4 @@
+export { default as BmeAbilities } from "./abilities";
 export { default as BmeAnimatedTitle } from "./animated-title";
 export { default as BmeBadge } from "./badge";
 export { default as BmeBody } from "./body";
@@ -15,4 +16,5 @@ export { default as BmeList } from "./list";
 export { default as BmeProviders } from "./providers";
 export { default as BmeSection } from "./section";
 export { default as BmeSelect } from "./select";
+export { default as BmeStarRating } from "./star-rating";
 export { default as BmeText } from "./text";

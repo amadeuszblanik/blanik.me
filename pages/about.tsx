@@ -1,8 +1,14 @@
 import React from "react";
 import { LayoutMain } from "@/layout";
-import { BmeContainer, BmeExperience, BmeHeader, BmeSection, BmeText } from "@/lib/components";
+import { BmeAbilities, BmeContainer, BmeExperience, BmeHeader, BmeSection, BmeText } from "@/lib/components";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import ApiContentfulService, { AboutEntrySkeleton, ExperienceEntrySkeleton } from "@/service/api-contentful.service";
+import ApiContentfulService, {
+  AbilitiesCodingEntrySkeleton,
+  AbilitiesLanguagesEntrySkeleton,
+  AbilitiesOthersEntrySkeleton,
+  AboutEntrySkeleton,
+  ExperienceEntrySkeleton,
+} from "@/service/api-contentful.service";
 import { Entry } from "contentful";
 import { firstElement } from "bme-utils";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
@@ -18,13 +24,34 @@ export const getStaticProps = (async () => {
       new Date(dateB).getTime() - new Date(dateA).getTime(),
   );
 
-  return { props: { about: firstElement(contentfulAbout.items), experience } };
+  const contentfulAbilitiesCoding = await apiContentfulService.abilitiesCoding;
+  const contentfulAbilitiesLanguages = await apiContentfulService.abilitiesLanguages;
+  const contentfulAbilitiesOthers = await apiContentfulService.abilitiesOthers;
+
+  return {
+    props: {
+      about: firstElement(contentfulAbout.items),
+      experience,
+      abilitiesCoding: contentfulAbilitiesCoding.items,
+      abilitiesLanguages: contentfulAbilitiesLanguages.items,
+      abilitiesOthers: contentfulAbilitiesOthers.items,
+    },
+  };
 }) satisfies GetStaticProps<{
   about?: Entry<AboutEntrySkeleton> | null;
   experience: Entry<ExperienceEntrySkeleton>[];
+  abilitiesCoding: Entry<AbilitiesCodingEntrySkeleton>[];
+  abilitiesLanguages: Entry<AbilitiesLanguagesEntrySkeleton>[];
+  abilitiesOthers: Entry<AbilitiesOthersEntrySkeleton>[];
 }>;
 
-export default function Page({ about, experience }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page({
+  about,
+  experience,
+  abilitiesCoding,
+  abilitiesLanguages,
+  abilitiesOthers,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <LayoutMain>
       <BmeHeader title={<BmeText variant="title">About me</BmeText>} />
@@ -55,6 +82,9 @@ export default function Page({ about, experience }: InferGetStaticPropsType<type
               ),
             )}
           </BmeExperience>
+        </BmeSection>
+        <BmeSection header="Abilities">
+          <BmeAbilities technologies={abilitiesCoding} languages={abilitiesLanguages} others={abilitiesOthers} />
         </BmeSection>
       </BmeContainer>
     </LayoutMain>

@@ -8,24 +8,24 @@ export type AboutEntrySkeleton = {
   };
 };
 
-interface AbitilitiesFields {
+export interface AbilityFields {
   name: contentful.EntryFieldTypes.Text;
   level: contentful.EntryFieldTypes.Integer;
 }
 
 export type AbilitiesCodingEntrySkeleton = {
   contentTypeId: "technology";
-  fields: AbitilitiesFields;
+  fields: AbilityFields;
 };
 
 export type AbilitiesLanguagesEntrySkeleton = {
   contentTypeId: "abilitiesLanguages";
-  fields: AbitilitiesFields;
+  fields: AbilityFields;
 };
 
 export type AbilitiesOthersEntrySkeleton = {
   contentTypeId: "abilitiesOthers";
-  fields: AbitilitiesFields;
+  fields: AbilityFields;
 };
 
 export type ExperienceEntrySkeleton = {
