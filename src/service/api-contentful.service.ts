@@ -11,6 +11,7 @@ export type AboutEntrySkeleton = {
 export interface AbilityFields {
   name: contentful.EntryFieldTypes.Text;
   level: contentful.EntryFieldTypes.Integer;
+  categories: contentful.EntryFieldTypes.Text[];
 }
 
 export type AbilitiesCodingEntrySkeleton = {

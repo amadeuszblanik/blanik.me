@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LayoutMain } from "@/layout";
 import { BmeAbilities, BmeContainer, BmeExperience, BmeHeader, BmeSection, BmeText } from "@/lib/components";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
