@@ -16,7 +16,7 @@ const Wrapper = styled(animated.div)`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1050;
   width: 100%;
   background: rgb(var(--background));
   overflow: hidden;
