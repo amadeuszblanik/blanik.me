@@ -1,11 +1,10 @@
 import React from "react";
+import Head from "next/head";
 
 const Component = () => (
-  <>
-    <meta
-      name="description"
-      content="I am a Frontend Developer with commercial experience. My passion is my work even after hours I used to develop and learn new things. I'm available to hire!"
-    />
+  <Head>
+    <title>Amadeusz Blanik</title>
+    <meta name="description" content="I am a Frontend Developer with commercial experience." />
     <meta name="keywords" content="front-end developer amadeusz blanik frontend" />
     <meta name="author" content="Amadeusz Blanik" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -13,7 +12,7 @@ const Component = () => (
     <link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png" />
     <link rel="icon" href="/meta/favicon.ico" />
-  </>
+  </Head>
 );
 
 export default Component;

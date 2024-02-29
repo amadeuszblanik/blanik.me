@@ -1,4 +1,4 @@
-# blanik.me
+# Blanik.me INDEV
 
 Welcome to the source code repository for my personal webpage, [blanik.me](https://blanik.me)! My name is Amadeusz Blanik, and this site serves as a portfolio.
 
@@ -8,11 +8,23 @@ This project is built using [Next.js 14](https://nextjs.org/), a powerful React 
 
 In addition to the core technologies, the site features smooth and modern animations implemented with [`react-spring`](https://www.react-spring.io/). `react-spring` is a spring-physics based animation library that allows for creating natural motion effects in React applications, enhancing user experience and interactivity.
 
-## Why Next.js, styled-components, and react-spring?
+## TODOs
+- **Remove CSS variables**: I experimented with CSS variables mixed with styled-components theme, and it's not a good solution.
+- **Clean code**: This is still version 8.0.0-INDEV. So time-to-deploy is more important than clean code.
+- **Tests**: I'll write some someday. Probably.
+- **Make it a single page**: I'll think about transforming it into a single page with a parallax effect.
+- **Redesign experience section once more**: This is still not as good as it should be.
+- **Add search to abilities section**
+- **Add filters to abilities section**
+- **Redesign star-rating component**
+- **Redesign header component**
+- **Rethink container and main page**
+- **Add accessibility**
+- **Check the errors in the console**: It's not important at this stage. I'll probably make a lot of changes in the following updates.
 
+## Why Next.js, styled-components, and react-spring?
 - **Next.js 14:** Offers out-of-the-box features like hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more, which are crucial for building modern web applications.
 - **styled-components:** Provides a way to write actual CSS code to style your components. It also removes the mapping between components and styles, making it easier to track which styles are applied to which components.
-- **CSS Variables:** Used for theming across the site, allowing for easier theme customization and maintenance without the overhead of integrating with styled-components' `ThemeProvider`.
 - **react-spring:** A powerful library for creating fluid, natural animations that add life and interactivity to web applications. It leverages spring physics for smooth and natural motion effects.
 
 ## Deployment

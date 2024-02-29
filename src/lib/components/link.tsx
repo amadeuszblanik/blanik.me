@@ -4,7 +4,8 @@ import { BmeText } from "@/lib/components/index";
 
 interface Props {
   url: string;
-  children: string;
+  target?: "_blank";
+  noStyledText?: boolean;
 }
 
 const Anchor = styled.a`
@@ -14,10 +15,10 @@ const Anchor = styled.a`
   }
 `;
 
-const Component: React.FC<Props> = ({ url, children }) => {
+const Component: React.FC<React.PropsWithChildren<Props>> = ({ url, target, noStyledText, children }) => {
   return (
-    <Anchor href={url}>
-      <BmeText>{children}</BmeText>
+    <Anchor href={url} target={target}>
+      {noStyledText ? children : <BmeText>{children}</BmeText>}
     </Anchor>
   );
 };
