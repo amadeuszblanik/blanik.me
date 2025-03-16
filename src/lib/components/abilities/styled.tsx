@@ -67,12 +67,17 @@ export const ItemWrapper = styled.div`
 `;
 
 export const ItemLogo = styled.div`
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
   margin-right: ${sizes.md};
-  min-height: 32px;
+  height: 32px;
+
+  & > img {
+    max-height: 32px;
+  }
 `;
 
 export const ItemName = styled.div`

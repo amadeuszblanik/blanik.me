@@ -11,19 +11,22 @@ const mapAbilitiesItems = ({ fields }: AbilitiesProps[keyof AbilitiesProps][numb
   logoDark: fields.logoDark ? { url: fields.logoDark.fields.file!.url, alt: fields.logoDark.fields.title! } : undefined,
 });
 
+const sortAbilitiesItems = (a: AbilityItemProps, b: AbilityItemProps) =>
+  a.level - b.level || a.name.localeCompare(b.name);
+
 const Component: Abilities = ({ technologies, languages, others }) => (
   <Wrapper>
     <Grid>
       <GridItem name="technologies">
-        <Section name="Technologies" items={technologies.map(mapAbilitiesItems)} />
+        <Section name="Technologies" items={technologies.map(mapAbilitiesItems).sort(sortAbilitiesItems)} />
       </GridItem>
       <GridItem name="languages">
         <BmeBox paddingBottom="md">
-          <Section name="Languages" items={languages.map(mapAbilitiesItems)} />
+          <Section name="Languages" items={languages.map(mapAbilitiesItems).sort(sortAbilitiesItems)} />
         </BmeBox>
       </GridItem>
       <GridItem name="others">
-        <Section name="Others" items={others.map(mapAbilitiesItems)} />
+        <Section name="Others" items={others.map(mapAbilitiesItems).sort(sortAbilitiesItems)} />
       </GridItem>
     </Grid>
   </Wrapper>

@@ -24,7 +24,14 @@ const Component: AbilityItem = ({ name, logo, logoDark }) => {
     <ItemWrapper>
       {logoUrl && (
         <ItemLogo>
-          <Image src={logoUrl} alt={getLogoAlt(theme, logo, logoDark)} width={32} height={32} />
+          <Image
+            src={logoUrl}
+            alt={getLogoAlt(theme, logo, logoDark)}
+            width={32}
+            height={32}
+            objectFit="cover"
+            layout="responsive"
+          />
         </ItemLogo>
       )}
       <ItemName>{name}</ItemName>
