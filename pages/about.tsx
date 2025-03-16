@@ -1,6 +1,6 @@
 import React from "react";
 import { LayoutMain } from "@/layout";
-import { BmeAbilities, BmeContainer, BmeExperience, BmeHeader, BmeSection, BmeText } from "@/lib/components";
+import { BmeAbilities, BmeBox, BmeContainer, BmeExperience, BmeHeader, BmeSection, BmeText } from "@/lib/components";
 import { GetStaticProps, InferGetServerSidePropsType } from "next";
 import ApiContentfulService, {
   AbilitiesCodingEntrySkeleton,
@@ -12,6 +12,8 @@ import ApiContentfulService, {
 import { Entry } from "contentful";
 import { firstElement } from "bme-utils";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+
+const FIRST_CODE_EXPERIENCE = 2008;
 
 export const getServerSideProps = (async () => {
   const apiContentfulService = new ApiContentfulService();
@@ -62,6 +64,23 @@ export default function Page({
           </BmeSection>
         )}
         <BmeSection header="Experience">
+          <BmeBox paddingBottom="sm">
+            <BmeExperience.Summary
+              total={experience.map(({ fields: { dateStart, dateEnd } }) => ({
+                dateStart: new Date(dateStart),
+                dateEnd: dateEnd && new Date(dateEnd),
+              }))}
+              leadership={experience
+                .filter(({ fields: { positionName } }) =>
+                  ["lead", "head"].some((query) => positionName.toLowerCase().includes(query)),
+                )
+                .map(({ fields: { dateStart, dateEnd } }) => ({
+                  dateStart: new Date(dateStart),
+                  dateEnd: dateEnd && new Date(dateEnd),
+                }))}
+              firstCodeExperience={new Date(FIRST_CODE_EXPERIENCE, 0, 1)}
+            />
+          </BmeBox>
           <BmeExperience>
             {experience.map(
               ({

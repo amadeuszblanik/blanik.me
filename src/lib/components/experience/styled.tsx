@@ -82,3 +82,39 @@ export const ItemContent = styled.div`
   grid-column: span 2 / span 2;
   padding-left: ${sizes.xl};
 `;
+
+export const SummaryWrapper = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  padding-bottom: ${sizes.xl};
+
+  & > div {
+    margin: ${sizes.md} 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media screen and (min-width: ${breakpoints.Tablet}) {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    & > div {
+      margin: 0 ${sizes.md};
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+`;

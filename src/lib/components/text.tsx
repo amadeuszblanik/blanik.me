@@ -15,6 +15,8 @@ interface TextProps {
 interface TextVariantStyles {
   fontSize: string;
   fontWeight: "300" | "400" | "500" | "600" | "700";
+  fontStyle?: "normal" | "italic" | "oblique";
+  fontFamily?: "var(--font-mono)" | "var(--font)";
 }
 
 interface TextStylesResponsive {
@@ -49,10 +51,14 @@ export const TEXT_STYLES: { [key in TextVariants]: TextStylesResponsive } = {
     [Breakpoints.Mobile]: {
       fontSize: "3rem",
       fontWeight: "500",
+      fontStyle: "italic",
+      fontFamily: "var(--font-mono)",
     },
     [Breakpoints.Tablet]: {
       fontSize: "3.75rem",
       fontWeight: "500",
+      fontStyle: "italic",
+      fontFamily: "var(--font-mono)",
     },
   },
   "header-small": {
@@ -90,7 +96,7 @@ const Text = styled.div<TextProps>`
   font-family: ${({ mono }) => (mono ? "var(--font-mono)" : "var(--font)")};
   white-space: ${({ nowrap }) => (nowrap ? "pre" : "normal")};
 
-  ${({ variant }) =>
+  ${({ fontStyle, variant, mono }) =>
     Object.entries(TEXT_STYLES[variant ?? "body"])
       .slice(1)
       .map(
@@ -98,6 +104,8 @@ const Text = styled.div<TextProps>`
     @media (min-width: ${breakpoints[breakpoint as Breakpoints]}) {
       font-size: ${value.fontSize};
       font-weight: ${value.fontWeight};
+      font-style: ${fontStyle || value.fontStyle || "normal"};
+      font-family: ${value.fontFamily || (mono ? "var(--font-mono)" : "var(--font)")};
   }`,
       )}
 `;

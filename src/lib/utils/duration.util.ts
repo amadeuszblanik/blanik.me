@@ -1,10 +1,10 @@
-const TIME_IN_DAYS = 8.64e7;
+const MILLISECONDS_IN_DAY = 8.64e7;
 const DAYS_IN_YEAR = 365.25;
 const MONTHS_IN_YEAR = 12;
 
 const util = (dateA: Date, dateB: Date) => {
   const content = [];
-  const days = Math.ceil((dateA.getTime() - dateB.getTime()) / TIME_IN_DAYS);
+  const days = Math.ceil((dateA.getTime() - dateB.getTime()) / MILLISECONDS_IN_DAY);
 
   const years = days / DAYS_IN_YEAR;
   const yearsToDisplay = Math.floor(years);
