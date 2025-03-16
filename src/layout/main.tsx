@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Analytics } from "@vercel/analytics/react";
 
 interface Props extends React.PropsWithChildren {
-  bgBackground?: boolean;
+  gradientBackground?: boolean;
 }
 
 const PositionWrapper = styled.div`
@@ -15,9 +15,9 @@ const PositionWrapper = styled.div`
   min-height: 100vh;
 `;
 
-export default function Layout({ children, bgBackground }: Readonly<Props>) {
+export default function Layout({ children, gradientBackground }: Readonly<Props>) {
   return (
-    <BmeBody gradient={bgBackground}>
+    <BmeBody gradient={gradientBackground}>
       <PositionWrapper>
         <div>{children}</div>
         <BmeFooter />

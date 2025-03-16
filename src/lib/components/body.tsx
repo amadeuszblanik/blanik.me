@@ -9,10 +9,10 @@ const Component = styled.div<Props>`
   background: ${({ theme, gradient }) =>
     gradient
       ? `linear-gradient(
-    -5deg,
+    333deg,
     ${theme.palette.backgroundEnd} 0%,
     ${theme.palette.backgroundMid} 18%,
-    ${theme.palette.backgroundStart} 33%,
+    ${theme.palette.backgroundStart} 88%,
     ${theme.palette.backgroundStart} 100%
   )`
       : theme.palette.background};
