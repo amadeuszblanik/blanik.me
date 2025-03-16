@@ -11,6 +11,8 @@ export type AboutEntrySkeleton = {
 export interface AbilityFields {
   name: contentful.EntryFieldTypes.Text;
   level: contentful.EntryFieldTypes.Integer;
+  logo?: contentful.EntryFieldTypes.AssetLink;
+  logoDark?: contentful.EntryFieldTypes.AssetLink;
 }
 
 export type AbilitiesCodingEntrySkeleton = {

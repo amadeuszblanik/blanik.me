@@ -6,9 +6,17 @@ import {
 } from "@/service/api-contentful.service";
 import { Entry } from "contentful";
 
-interface AbilityItemProps {
+export interface AbilityItemProps {
   name: string;
   level: number;
+  logo?: {
+    url: string;
+    alt: string;
+  };
+  logoDark?: {
+    url: string;
+    alt: string;
+  };
 }
 
 export type AbilityItem = React.FC<AbilityItemProps>;
@@ -21,9 +29,9 @@ export interface AbilitiesSectionProps {
 export type AbilitiesSection = React.FC<AbilitiesSectionProps>;
 
 export interface AbilitiesProps {
-  technologies: Entry<AbilitiesCodingEntrySkeleton>[];
-  languages: Entry<AbilitiesLanguagesEntrySkeleton>[];
-  others: Entry<AbilitiesOthersEntrySkeleton>[];
+  technologies: Entry<AbilitiesCodingEntrySkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>[];
+  languages: Entry<AbilitiesLanguagesEntrySkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>[];
+  others: Entry<AbilitiesOthersEntrySkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>[];
 }
 
 export type Abilities = React.FC<AbilitiesProps>;

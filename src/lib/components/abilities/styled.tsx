@@ -38,19 +38,47 @@ export const SectionWrapper = styled.div`
   }
 `;
 
+export const SectionContent = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  padding: ${sizes.sm} 0;
+
+  @media screen and (min-width: ${breakpoints.Tablet}) {
+    padding: ${sizes.md} 0;
+  }
+`;
+
 // Item
 export const ItemWrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+  padding: ${sizes.sm} ${sizes.md};
+  border: 2px solid ${({ theme }) => theme.palette.content2};
+  border-radius: ${sizes.xl2};
+  transition: all 125ms;
+  will-change: background, background-color;
+
+  &:hover,
+  &:active {
+    background: ${({ theme }) => theme.palette.content2};
+  }
+`;
+
+export const ItemLogo = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-right: ${sizes.md};
+  min-height: 32px;
 `;
 
 export const ItemName = styled.div`
   display: flex;
   flex-flow: row nowrap;
-`;
-
-export const ItemLevel = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 32px;
 `;

@@ -8,6 +8,10 @@ declare module "styled-components" {
       backgroundStart: string;
       backgroundMid: string;
       backgroundEnd: string;
+      content1: string;
+      content2: string;
+      content3: string;
+      content4: string;
       main: string;
       secondary: string;
       gray: string;
