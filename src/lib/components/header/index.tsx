@@ -44,7 +44,7 @@ const Component: React.FC<Props> = ({ title }) => {
         {!isTablet && <MenuButton open={isOpen} onClick={() => setIsOpen(!isOpen)} />}
       </Wrapper>
       {!isTablet && title}
-      {!isTablet && <MenuMobile open={isOpen} />}
+      {!isTablet && <MenuMobile open={isOpen} onClose={() => setIsOpen(false)} />}
     </Container>
   );
 };

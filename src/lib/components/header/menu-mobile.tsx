@@ -10,6 +10,7 @@ import { NAVIGATION_ITEMS } from "@/lib/components/header/index";
 
 interface Props {
   open: boolean;
+  onClose: () => void;
 }
 
 const Wrapper = styled(animated.div)`
@@ -34,7 +35,7 @@ const NavigationItem = styled(animated(Link))`
   border-bottom: rgb(var(--gray)) solid 1px;
 `;
 
-const Component: React.FC<Props> = ({ open }) => {
+const Component: React.FC<Props> = ({ open, onClose }) => {
   const wrapperRef = useSpringRef();
   const itemsRef = useSpringRef();
 
@@ -64,7 +65,7 @@ const Component: React.FC<Props> = ({ open }) => {
       <Container>
         <Navigation>
           {trail.map(({ height, ...style }, index) => (
-            <NavigationItem key={index} href={NAVIGATION_ITEMS[index].href} style={style}>
+            <NavigationItem key={index} href={NAVIGATION_ITEMS[index].href} onClick={onClose} style={style}>
               <BmeText variant="header">{NAVIGATION_ITEMS[index].label}</BmeText>
             </NavigationItem>
           ))}
