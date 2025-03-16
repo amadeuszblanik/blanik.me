@@ -1,7 +1,7 @@
 import React from "react";
 import { LayoutMain } from "@/layout";
 import { BmeAbilities, BmeContainer, BmeExperience, BmeHeader, BmeSection, BmeText } from "@/lib/components";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetStaticProps, InferGetServerSidePropsType } from "next";
 import ApiContentfulService, {
   AbilitiesCodingEntrySkeleton,
   AbilitiesLanguagesEntrySkeleton,
@@ -13,7 +13,7 @@ import { Entry } from "contentful";
 import { firstElement } from "bme-utils";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
-export const getStaticProps = (async () => {
+export const getServerSideProps = (async () => {
   const apiContentfulService = new ApiContentfulService();
 
   const contentfulAbout = await apiContentfulService.about;
@@ -51,7 +51,7 @@ export default function Page({
   abilitiesCoding,
   abilitiesLanguages,
   abilitiesOthers,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <LayoutMain>
       <BmeHeader title={<BmeText variant="title">About me</BmeText>} />
