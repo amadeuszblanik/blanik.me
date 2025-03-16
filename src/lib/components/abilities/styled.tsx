@@ -72,8 +72,9 @@ export const ItemLogo = styled.div`
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-  margin-right: ${sizes.md};
+  width: 32px;
   height: 32px;
+  margin-right: ${sizes.md};
 
   & > img {
     max-height: 32px;

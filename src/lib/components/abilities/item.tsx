@@ -27,10 +27,10 @@ const Component: AbilityItem = ({ name, logo, logoDark }) => {
           <Image
             src={logoUrl}
             alt={getLogoAlt(theme, logo, logoDark)}
-            width={32}
-            height={32}
-            objectFit="cover"
-            layout="responsive"
+            width="0"
+            height="0"
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
           />
         </ItemLogo>
       )}
